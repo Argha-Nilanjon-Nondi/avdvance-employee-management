@@ -13,10 +13,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $token= $json_data["token"];
     $action=$json_data["action"];
     $data=$json_data["data"];
-    $objValidation->token=$token;
-    if(($objValidation->ValidToken()==true)){
-      $objValidation->userid=$objValidation->tokenToId();
-      if($objValidation->isAdmin()==true){
+    if(($objValidation->ValidToken($token=$token)==true)){
+      $userid=$objValidation->tokenToId($token=$token);
+      if($objValidation->isAdmin($userid=$userid)==true){
         //actual code is here
         $objAdmin= new Admin();
         $objAdmin->data=$data;
@@ -27,6 +26,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         else if($action=="get-users"){
           //get users list
           $objAdmin->get_users();
+        }
+        else if($action=="get-profile"){
+          //get user"s profile
+          $objAdmin->get_profile();
         }
         else if($action=="update-profile"){
           $objAdmin->update_profile();

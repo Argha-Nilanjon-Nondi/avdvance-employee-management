@@ -65,3 +65,34 @@ JSON:{
   "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
   "data":"000"
 }
+
+
+5||update an users porofile
+url:http://localhost/employee_management_system/admin.php
+method:POST
+JSON:{
+  "action":"update-profile",
+  "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
+  "data":{
+    "userid":"2108963712",
+    "username":"Argha Nilanjon Nondi",
+    "contactno":"+8801710962",
+    "address":"London",
+    "position":"full Stack",
+    "incomeperhour":"1000",
+    "hiredate":"2021-02-30"
+  }
+}
+
+
+
+6||get the user's profile
+url:http://localhost/employee_management_system/admin.php
+method:POST
+JSON:{
+  "action":"get-profile",
+  "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
+  "data":{
+    "userid":"2108963712"
+  }
+}

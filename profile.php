@@ -13,11 +13,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $token= $json_data["token"];
     $action=$json_data["action"];
     $data=$json_data["data"];
-    $objValidation->token=$token;
-    if(($objValidation->ValidToken()==true)){
+    if(($objValidation->ValidToken($token=$token)==true)){
       //actual code is here
       $profileObj=new Profile();
-      $profileObj->userid=$objValidation->tokenToId();
+      $profileObj->userid=$objValidation->tokenToId($token=$token);
       if($action=="get-data"){
         $profileObj->get_info();
       }

@@ -38,8 +38,7 @@ class Profile{
 
          if($column=="contactno"){
              $objValidation=new Validation();
-             $objValidation->contactno=$value;
-             if($objValidation->validContactNO() ==true){
+             if($objValidation->validContactNO($contactno=$value)==true){
                 $this->update_column($column,$value);
              }
              else{
