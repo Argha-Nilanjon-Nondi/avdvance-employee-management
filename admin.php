@@ -32,7 +32,24 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
           $objAdmin->get_profile();
         }
         else if($action=="update-profile"){
+          //update user data
           $objAdmin->update_profile();
+        }
+        else if($action=="checkin"){
+          //checkin a user
+          $objAdmin->checkin();
+        }
+        else if($action=="checkout"){
+          //checkout a user
+          $objAdmin->checkout();
+        }
+        else if($action=="delete-check"){
+          //checkout a user
+          $objAdmin->deletecheck();
+        }
+        else if($action=="delete-user"){
+          //checkout a user
+          $objAdmin->deleteuser();
         }
         else{
           $data=array();

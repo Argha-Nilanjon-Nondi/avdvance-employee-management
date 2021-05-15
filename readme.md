@@ -96,3 +96,56 @@ JSON:{
     "userid":"2108963712"
   }
 }
+
+
+7||check in a user
+url:http://localhost/employee_management_system/admin.php
+method:post
+JSON:{
+  "action":"checkin",
+  "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
+  "data":{
+    "userid":"2108963712",
+    "checkin":"12:11:01",
+    "date":"2021-05-30"
+  }
+}
+
+
+8||checkout a user
+url:http://localhost/employee_management_system/admin.php
+method:post 
+JSON:{
+  "action":"checkout",
+  "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
+  "data":{
+    "userid":"2108963712",
+    "checkout":"18:11:40",
+    "date":"2021-05-30"
+  }
+}
+
+
+9||Delete a user
+url:http://localhost/employee_management_system/admin.php
+method:post
+JSON:{
+  "action":"delete-user",
+  "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
+  "data":{
+    "userid":"657634785"
+  }
+}
+
+10||change password
+url:http://localhost/employee_management_system/admin.php
+method:post
+JSON:{
+  "action":"change-password",
+  "token":"dd225a8cb1556ba965f9f39da3db92f7edd5dc593026ea72ddc41158dbb8d415",
+  "data":{
+    "token":"94ad6bb68fc3c374384ade6ed47454b9ece77dfce71919ef2762522c6117771f",
+    "old-password":"9171914300",
+    "new-password":"917191439900"
+  }
+}

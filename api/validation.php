@@ -5,6 +5,7 @@
 
   public function validPassword($password){
           for($i=0;$i<strlen($password);$i++){
+          
              if($password[$i]==" "){
                return false;             
           }
@@ -126,6 +127,18 @@
     return false;
   }
 
+  public function validUserType($type){
+    $avaliable_type=array("admin","employee");
+    for($i=0;$i<count($avaliable_type);$i++){
+      $input_type=str_ireplace(" ","",strtolower($type));
+      $db_type=str_ireplace(" ","",strtolower($avaliable_type[$i]));
+      if($db_type==$input_type){
+        return strtolower($type);
+      }
+    }
+    return false;
+  }  
+
   public function validDate($date){
     $mod_text=explode("-",$date);
     $year=$mod_text[0];
@@ -133,12 +146,17 @@
     $day=$mod_text[2];
     return checkdate($month,$day,$year);
   }
+
+  public function validTime($time){
+    return strtotime($time);
 }
+
+  }
 
 // $obj=new Validation();
 // $obj->password="hhjijh9999";
 // $obj->token="931e7780fdb2d079eacbdc0886030c98a51ba667f5f59a8e";
 // $obj->email="admin@gmail.com";
-// $obj->id="657634785";
+// $obj->id="6634785";
 // echo json_encode($obj->validID());
 ?>

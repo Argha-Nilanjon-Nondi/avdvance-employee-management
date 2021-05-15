@@ -13,8 +13,8 @@ class Login{
     $objDatabase->getConnection();
     
     $randnum=strval(mt_rand());
-     $objDatabase->sql="SELECT token FROM users WHERE email='".$this->email."' AND password=SHA2('".$this->password."',256);
-     UPDATE users set token=SHA2('".$randnum."',256) WHERE email='".$this->email."' AND password=SHA2('".$this->password."',256) ";
+     $objDatabase->sql="SELECT token FROM users WHERE email='$this->email' AND password=SHA2('$this->password',256);
+     UPDATE users set token=SHA2('$randnum',256) WHERE email='$this->email' AND password=SHA2('$this->password',256) ";
      $sqlRep=$objDatabase->runSql();
      if(count($sqlRep)==0){
          $data=array();
@@ -24,7 +24,7 @@ class Login{
          return 0;
      }
 
-     $objDatabase->sql="SELECT token FROM users WHERE email='".$this->email."' AND password=SHA2('".$this->password."',256);";
+     $objDatabase->sql="SELECT token FROM users WHERE email='$this->email' AND password=SHA2('$this->password',256);";
      $sqlRep=$objDatabase->runSql();
      $token=$sqlRep[0]["token"];
      $data=array();
