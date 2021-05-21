@@ -62,9 +62,9 @@ class Admin{
               $objDatabase->getConnection();
               $randnum=strval(mt_rand());
               $objDatabase->sql="
-                 INSERT users(userid,email,password,token) VALUES('".$randnum."','".$email."',SHA2('".$password."',256),SHA2('".$randnum."',256));
+                 INSERT users(userid,email,password,token) VALUES('$randnum','$email',SHA2('$password',256),SHA2('$randnum',256));
                  INSERT profiles(userid,usertype,username,position,contactno,address,incomeperhour,hiredate) 
-                 VALUES('".$randnum."','".$usertype."','".$username."','".$position."','".$contactno."','".$address."',".$incomeperhour.",'".$hiredate."');
+                 VALUES('$randnum','$usertype','$username','$position','$contactno','$address','$incomeperhour,'$hiredate');
               ";
               $objDatabase->runSql();
               $data=array();
@@ -234,7 +234,10 @@ class Admin{
       $objValidation->data=$this->data;
       
      
-      if($objValidation->checkArray(array("userid"))==false){
+      if(
+        (isset($this->data["userid"])==false) ||
+        (empty($this->data["userid"])==true)
+       ){
         $data=array();
         $data["code"]="3055";
         $data["message"]="Employee user id is missing";
@@ -252,7 +255,6 @@ class Admin{
         return 0;
       } 
 
-      $objValidation=new Validation();
       if((isset($this->data["date"])==false) || 
          (isset($this->data["checkin"])==false) || 
          (empty($this->data["date"])==true) || 

@@ -82,7 +82,7 @@
   public function isIdExist($userid){
     $objDatabase=new Database();
     $objDatabase->getConnection();
-     $objDatabase->sql="SELECT userid FROM profiles WHERE userid='".$userid."'";
+     $objDatabase->sql="SELECT userid FROM profiles WHERE userid='$userid'";
      $sqlRep=$objDatabase->runSql();
      if(count($sqlRep)==0){
        return false;
@@ -93,7 +93,7 @@
   public function isEmailExist($email){
     $objDatabase=new Database();
     $objDatabase->getConnection();
-     $objDatabase->sql="SELECT userid FROM users WHERE email='".$email."'";
+     $objDatabase->sql="SELECT userid FROM users WHERE email='$email'";
      $sqlRep=$objDatabase->runSql();
      if(count($sqlRep)==0){
        return false;

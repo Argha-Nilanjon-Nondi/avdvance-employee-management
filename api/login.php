@@ -2,7 +2,7 @@
 class Login{
    public function logmein(){
     $objValidation=new Validation();
-    if(($objValidation->validEmail($this->email)==false) && ($objValidation->validPassword($this->password)==false)){
+    if(($objValidation->validEmail($this->email)==false) || ($objValidation->validPassword($this->password)==false)){
       $data=array();
       $data["code"]="3003";
       $data["message"]="Email or Password is not valid";

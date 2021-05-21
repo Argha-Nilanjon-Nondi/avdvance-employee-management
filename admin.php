@@ -9,7 +9,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   $json_data=json_decode($json,true);
   $objValidation=new Validation();
   $objValidation->data=$json_data;
-  if($objValidation->checkArray(array("token","action","data"))==true){
+  if(
+    (isset($json_data["token"])==true) &&
+    (isset($json_data["action"])==true) &&
+    (isset($json_data["data"])==true) &&
+    (empty($json_data["token"])==false) &&
+    (empty($json_data["action"])==false)
+   ){
     $token= $json_data["token"];
     $action=$json_data["action"];
     $data=$json_data["data"];
